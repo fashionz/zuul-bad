@@ -34,23 +34,28 @@ public class Game
      */
     private void createRooms()
     {
-        Room outside, theater, pub, lab, office;
+        Room salaPrincipal, salaTigre, salaAlien, salaTaberna, salaPub, salaGhetto, salaFinal;
       
         // create the rooms
-        outside = new Room("outside the main entrance of the university");
-        theater = new Room("in a lecture theater");
-        pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab");
-        office = new Room("in the computing admin office");
+        salaPrincipal = new Room("Entrada de la Escape Room!");
+        salaTigre = new Room("Cuidado con el tigre, huye mientras puedas!");
+        salaAlien = new Room("Cuidado con el ET de las narices, tienes una pistola de rayos y no dudará en disparar, huye!!!");
+        salaTaberna = new Room("Pasa y tómate una buena birra. Debes estar cansado después de huir del tigre y del alien.");
+        salaPub = new Room("Quieto quieto, traaaanquilooo. Quédate un ratito y échate unos bailes antes de seguir.");
+        salaGhetto = new Room("Vete si no quieres caer en el mundo de la droga.");
+        salaFinal = new Room("Salida de la Escape Room!");
         
         // initialise room exits
-        outside.setExits(null, theater, lab, pub);
-        theater.setExits(null, null, null, outside);
-        pub.setExits(null, outside, null, null);
-        lab.setExits(outside, office, null, null);
-        office.setExits(null, null, null, lab);
+        //arriba, derecha, abajo, izquierda
+        salaPrincipal.setExits(salaAlien, salaTigre, null, salaTaberna);
+        salaTigre.setExits(null, null, null, salaPrincipal);
+        salaAlien.setExits(null, null, salaPrincipal, null);
+        salaTaberna.setExits(salaPub, salaPrincipal, null, null);
+        salaPub.setExits(salaGhetto, salaFinal, salaTaberna, null );
+        salaGhetto.setExits(null, null, salaPub, null);
+        salaFinal.setExits(null, null, null, salaPub);
 
-        currentRoom = outside;  // start game outside
+        currentRoom = salaPrincipal;  // start game outside
     }
 
     /**
