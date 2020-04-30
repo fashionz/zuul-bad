@@ -34,7 +34,7 @@ public class Game
      */
     private void createRooms()
     {
-        Room salaPrincipal, salaTigre, salaAlien, salaTaberna, salaPub, salaGhetto, salaFinal;
+        Room salaPrincipal, salaTigre, salaAlien, salaTaberna, salaPub, salaPozo, salaGhetto, salaFinal;
 
         // create the rooms
         salaPrincipal = new Room("Entrada de la Escape Room!");
@@ -42,18 +42,20 @@ public class Game
         salaAlien = new Room("Cuidado con el ET de las narices, tienes una pistola de rayos y no dudará en disparar, huye!!!");
         salaTaberna = new Room("Pasa y tómate una buena birra. Debes estar cansado después de huir del tigre y del alien.");
         salaPub = new Room("Quieto quieto, traaaanquilooo. Quédate un ratito y échate unos bailes antes de seguir.");
+        salaPozo = new Room("Si caes en el pozo vuelves a la salaPrincipal y empiezas de nuevo!");
         salaGhetto = new Room("Vete si no quieres caer en el mundo de la droga.");
         salaFinal = new Room("Salida de la Escape Room!");
 
         // initialise room exits
-        //arriba, derecha, abajo, izquierda
-        salaPrincipal.setExits(salaAlien, salaTigre, null, salaTaberna);
-        salaTigre.setExits(null, null, null, salaPrincipal);
-        salaAlien.setExits(null, null, salaPrincipal, null);
-        salaTaberna.setExits(salaPub, salaPrincipal, null, null);
-        salaPub.setExits(salaGhetto, salaFinal, salaTaberna, null );
-        salaGhetto.setExits(null, null, salaPub, null);
-        salaFinal.setExits(null, null, null, salaPub);
+        //arriba[N], derecha[E], abajo[S], izquierda[W], abajo-derecha[SE],
+        salaPrincipal.setExits(salaAlien, salaTigre, null, salaTaberna, null);
+        salaTigre.setExits(null, null, null, salaPrincipal, null);
+        salaAlien.setExits(null, null, salaPrincipal, null, null);
+        salaTaberna.setExits(salaPub, salaPrincipal, null, null, null);
+        salaPub.setExits(salaGhetto, salaFinal, salaTaberna, null, salaPozo);
+        salaPozo.setExits(null, null, salaPrincipal, null, null);
+        salaGhetto.setExits(null, null, salaPub, null, null);
+        salaFinal.setExits(null, null, null, salaPub, null);
 
         currentRoom = salaPrincipal;  // start game outside
     }
