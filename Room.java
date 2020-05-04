@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Set;
 /**
  * Class Room - a room in an adventure game.
  *
@@ -45,23 +46,7 @@ public class Room
      * @return La sala ubicada en la direccion especificada o null si no hay ninguna salida en esa direccion
      */
     public Room getExit(String salida) {
-        Room devuelveSalida = null;
-        if(salida.equals("north")) {
-            devuelveSalida = hmap.get("north");
-        }
-        if(salida.equals("east")) {
-            devuelveSalida = hmap.get("east");
-        }
-        if(salida.equals("south")) {
-            devuelveSalida = hmap.get("south");
-        }
-        if(salida.equals("west")) {
-            devuelveSalida = hmap.get("west");
-        }
-        if(salida.equals("southEast")) {
-            devuelveSalida = hmap.get("southEast");
-        }
-        return devuelveSalida;
+        return hmap.get(salida);
     }
 
     /**
@@ -72,17 +57,11 @@ public class Room
      * @return Una descripción de las salidas existentes.
      */
     public String getExitString() {
+        Set <String> puntosCardinales = hmap.keySet();
         String devuelveSalida = "Exits: ";
-        if(hmap.get("north") != null)
-            devuelveSalida += "north ";
-        if(hmap.get("east") != null)
-            devuelveSalida += "east ";
-        if(hmap.get("south") != null)
-            devuelveSalida += "south ";
-        if(hmap.get("west") != null)
-            devuelveSalida += "west ";
-        if(hmap.get("southEast") != null)
-            devuelveSalida += "southEast";
+        for (String direction : puntosCardinales) {
+            devuelveSalida = devuelveSalida + direction + " ";
+        }
         return devuelveSalida;
     }
 
@@ -93,21 +72,6 @@ public class Room
      * @param sala La sala que se encuentra en la direccion indicada
      */
     public void setExit(String direccion, Room sala) {
-        if (direccion.equals("north")) {
-            hmap.put("north", sala);
-        }
-        if (direccion.equals("east")) {
-            hmap.put("east", sala);
-        }
-        if (direccion.equals("south")) {
-            hmap.put("south", sala);
-        }
-        if (direccion.equals("west")) {
-            hmap.put("west", sala);
-        }
-        if (direccion.equals("southEast")) {
-            hmap.put("southEast", sala);
-        }
-
+        hmap.put(direccion, sala);
     }
 }
