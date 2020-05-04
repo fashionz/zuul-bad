@@ -74,4 +74,16 @@ public class Room
     public void setExit(String direccion, Room sala) {
         hmap.put(direccion, sala);
     }
+
+    /**
+     * Devuelve un texto con la descripcion completa de la habitacion, que 
+     * incluye la descripcion corta de la sala y las salidas de la misma. Por ejemplo:
+     *     You are in the lab
+     *     Exits: north west southwest
+     * @return Una descripcion completa de la habitacion incluyendo sus salidas
+     */
+    public String getLongDescription() {
+        String descHab = "Estás en " + getDescription() + "\n" + getExitString();
+        return descHab;
+    }
 }
