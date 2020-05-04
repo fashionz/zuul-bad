@@ -34,13 +34,15 @@ public class Game
      */
     private void createRooms()
     {
-        Room salaPrincipal, salaTigre, salaAlien, salaTaberna, salaPub, salaPozo, salaGhetto, salaFinal;
+        Room salaPrincipal, salaTigre, salaAlien, salaChucky, salaTaberna, salaPantera, salaPub, salaPozo, salaGhetto, salaFinal;
 
         // create the rooms
         salaPrincipal = new Room("Entrada de la Escape Room!");
         salaTigre = new Room("Cuidado con el tigre, huye mientras puedas!");
         salaAlien = new Room("Cuidado con el ET de las narices, tienes una pistola de rayos y no dudará en disparar, huye!!!");
+        salaChucky = new Room("HUYE, te has encontrado con Chucky!");
         salaTaberna = new Room("Pasa y tómate una buena birra. Debes estar cansado después de huir del tigre y del alien.");
+        salaPantera = new Room("Miau, una pantera anda suelta.");
         salaPub = new Room("Quieto quieto, traaaanquilooo. Quédate un ratito y échate unos bailes antes de seguir.");
         salaPozo = new Room("Si caes en el pozo vuelves a la salaPrincipal y empiezas de nuevo!");
         salaGhetto = new Room("Vete si no quieres caer en el mundo de la droga.");
@@ -53,16 +55,24 @@ public class Game
         salaPrincipal.setExit("north",salaAlien);
         salaPrincipal.setExit("east",salaTigre);
         salaPrincipal.setExit("west",salaTaberna);
+        salaPrincipal.setExit("northEast",salaChucky);
         
         //salaTigre
         salaTigre.setExit("west",salaPrincipal);
         
         //salaAlien
-        salaAlien.setExit("south",salaAlien);
+        salaAlien.setExit("south",salaPrincipal);
+        
+        //salaChucky
+        salaChucky.setExit("south",salaPrincipal);
         
         //salaTaberna
         salaTaberna.setExit("north",salaPub);
         salaTaberna.setExit("east",salaPrincipal);
+        salaTaberna.setExit("northWest",salaPantera);
+        
+        //salaPantera
+        salaPantera.setExit("south",salaTaberna);
         
         //salaPub
         salaPub.setExit("north",salaGhetto);
