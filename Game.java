@@ -50,42 +50,42 @@ public class Game
 
         // initialise room exits
         //arriba[N], derecha[E], abajo[S], izquierda[W], abajo-derecha[SE]
-        
+
         //salaPrincipal
         salaPrincipal.setExit("north",salaAlien);
         salaPrincipal.setExit("east",salaTigre);
         salaPrincipal.setExit("west",salaTaberna);
         salaPrincipal.setExit("northEast",salaChucky);
-        
+
         //salaTigre
         salaTigre.setExit("west",salaPrincipal);
-        
+
         //salaAlien
         salaAlien.setExit("south",salaPrincipal);
-        
+
         //salaChucky
         salaChucky.setExit("south",salaPrincipal);
-        
+
         //salaTaberna
         salaTaberna.setExit("north",salaPub);
         salaTaberna.setExit("east",salaPrincipal);
         salaTaberna.setExit("northWest",salaPantera);
-        
+
         //salaPantera
         salaPantera.setExit("south",salaTaberna);
-        
+
         //salaPub
         salaPub.setExit("north",salaGhetto);
         salaPub.setExit("east",salaFinal);
         salaPub.setExit("south",salaTaberna);
         salaPub.setExit("southEast",salaPozo);
-        
+
         //salaPozo
         salaPozo.setExit("west",salaPrincipal);
-        
+
         //salaGhetto
         salaPub.setExit("south",salaPub);
-        
+
         //salaFinal
         salaPub.setExit("west",salaPub);
 
@@ -144,6 +144,10 @@ public class Game
         else if (commandWord.equals("go")) {
             goRoom(command);
         }
+        else if (commandWord.equals("look")) {
+            look();
+        }
+
         else if (commandWord.equals("quit")) {
             wantToQuit = quit(command);
         }
@@ -209,8 +213,18 @@ public class Game
         }
     }
 
+    /**
+     * Imprime la descripción de la localización actual.
+     */
     private void printLocationInfo(){
         System.out.println(currentRoom.getLongDescription());
         System.out.println();
+    }
+
+    /**
+     * 
+     */
+    private void look() {
+        System.out.println(currentRoom.getLongDescription());
     }
 }
