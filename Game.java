@@ -37,16 +37,16 @@ public class Game
         Room salaPrincipal, salaTigre, salaAlien, salaChucky, salaTaberna, salaPantera, salaPub, salaPozo, salaGhetto, salaFinal;
 
         // create the rooms
-        salaPrincipal = new Room("Entrada de la Escape Room!");
-        salaTigre = new Room("Cuidado con el tigre, huye mientras puedas!");
-        salaAlien = new Room("Cuidado con el ET de las narices, tienes una pistola de rayos y no dudará en disparar, huye!!!");
-        salaChucky = new Room("HUYE, te has encontrado con Chucky!");
-        salaTaberna = new Room("Pasa y tómate una buena birra. Debes estar cansado después de huir del tigre y del alien.");
-        salaPantera = new Room("Miau, una pantera anda suelta.");
-        salaPub = new Room("Quieto quieto, traaaanquilooo. Quédate un ratito y échate unos bailes antes de seguir.");
-        salaPozo = new Room("Si caes en el pozo vuelves a la salaPrincipal y empiezas de nuevo!");
-        salaGhetto = new Room("Vete si no quieres caer en el mundo de la droga.");
-        salaFinal = new Room("Salida de la Escape Room!");
+        salaPrincipal = new Room("Entrada de la Escape Room!", "", 0);
+        salaTigre = new Room("Cuidado con el tigre, huye mientras puedas!", "", 0);
+        salaAlien = new Room("Cuidado con el ET de las narices, tienes una pistola de rayos y no dudará en disparar, huye!!!", "", 0);
+        salaChucky = new Room("HUYE, te has encontrado con Chucky!", "", 0);
+        salaTaberna = new Room("Pasa y tómate una buena birra. Debes estar cansado después de huir del tigre y del alien.", "cerveza", 1);
+        salaPantera = new Room("Miau, una pantera anda suelta.", "", 0);
+        salaPub = new Room("Quieto quieto, traaaanquilooo. Quédate un ratito y échate unos bailes antes de seguir.", "cubata", 1);
+        salaPozo = new Room("Si caes en el pozo vuelves a la salaPrincipal y empiezas de nuevo!", "", 0);
+        salaGhetto = new Room("Vete si no quieres caer en el mundo de la droga.", "", 0);
+        salaFinal = new Room("Salida de la Escape Room!", "premio", 1);
 
         // initialise room exits
         //arriba[N], derecha[E], abajo[S], izquierda[W], abajo-derecha[SE]
