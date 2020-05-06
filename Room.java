@@ -88,7 +88,7 @@ public class Room
      */
     public String getLongDescription() {
         String descHab = "Estás en " + getDescription() + "\n" + getExitString();
-        if(itemDescription.equals(itemDescription)) {
+        if(!itemDescription.equals("")) {
             descHab = descHab + "En esta sala hay " + itemDescription + " y su peso es de " + 
                     itemWeight;
         }
