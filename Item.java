@@ -1,33 +1,24 @@
-
 /**
- * Write a description of class Item here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Clase que se encarga de crear los items para las salas.
  */
 public class Item
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    private String itemDescription;
+    private int itemWeight;
 
     /**
-     * Constructor for objects of class Item
+     * Constructor clase item.
      */
-    public Item()
+    public Item(String itemDescription, int itemWeight)
     {
-        // initialise instance variables
-        x = 0;
+        this.itemDescription = itemDescription;
+        this.itemWeight = itemWeight;
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+     * Crea la descripción del item.
      */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    public String description(){
+        return "En esta sala hay " + itemDescription + " y su peso es de " + itemWeight;
     }
 }
