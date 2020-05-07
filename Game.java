@@ -19,6 +19,7 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
+    private Room lastestRoom;
 
     /**
      * Create the game and initialise its internal map.
@@ -152,13 +153,15 @@ public class Game
         else if (commandWord.equals("go")) {
             goRoom(command);
         }
+        else if(commandWord.equals("back")) {
+            back();
+        }
         else if (commandWord.equals("look")) {
             look();
         }
         else if (commandWord.equals("eat")) {
             eat(); 
         }
-
         else if (commandWord.equals("quit")) {
             wantToQuit = quit(command);
         }
@@ -204,6 +207,7 @@ public class Game
         }
         else {
             currentRoom = nextRoom;
+            lastestRoom = currentRoom;
             printLocationInfo();
         }
     }
@@ -240,9 +244,25 @@ public class Game
     }
 
     /**
-     * Muestra la sala actual en la que te encuentras
+     * Comes
      */
     private void eat() {
         System.out.println("acabas de comer y ya no tienes hambre");
+    }
+    
+    /**
+     * Regresas por donde has venido.
+     */
+    private void back() {
+        if(currentRoom == lastestRoom) {
+            System.out.println("Volver? Cómo? Estás ya en la sala a la que intentas volver.");
+        }
+        else if(lastestRoom == null) {
+            System.out.println("No hay salas a las que puedas moverte.");
+        }
+        else {
+            currentRoom = lastestRoom;
+            printLocationInfo();
+        }
     }
 }
