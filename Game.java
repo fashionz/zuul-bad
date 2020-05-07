@@ -36,22 +36,27 @@ public class Game
     {
         Room salaPrincipal, salaTigre, salaAlien, salaChucky, salaTaberna, salaPantera, salaPub, salaPozo, salaGhetto, salaFinal;
 
-        // create the rooms
-        salaPrincipal = new Room("La entrada de la Escape Room!", null);
-        salaTigre = new Room("La sala del tigre. Cuidado con él, huye mientras puedas!", null);
-        salaAlien = new Room("La sala del alien. Cuidado con el ET de las narices, tienes una pistola de rayos y no dudará en disparar, huye!!!", null);
-        salaChucky = new Room("La sala de chucky, HUYE!", null);
-        Item cerveza = new Item("Cerveza", 1);
-        salaTaberna = new Room("La taberna. Pasa y tómate una buena birra. Debes estar cansado después de huir del tigre y del alien.", cerveza);
-        salaPantera = new Room("La sala de la pantera. Miau, cuidado con el lindo gatito.", null);
-        Item cubata = new Item("Cubata", 1);
-        salaPub = new Room("El pub. Quieto quieto, traaaanquilooo. Quédate un ratito y échate unos bailes antes de seguir.", cubata);
-        salaPozo = new Room("El pozo, has caido y vuelves a la salaPrincipal y empiezas de nuevo!", null);
-        salaGhetto = new Room("El ghetto. Vete si no quieres caer en el mundo de la droga.", null);
-        Item premio = new Item("Premio", 1);
-        salaFinal = new Room("La salida de la Escape Room!", premio);
+        // CREACIÓN SALAS
+        salaPrincipal = new Room("La entrada de la Escape Room!");
+        salaTigre = new Room("La sala del tigre. Cuidado con él, huye mientras puedas!");
+        salaAlien = new Room("La sala del alien. Cuidado con el ET de las narices, tienes una pistola de rayos y no dudará en disparar, huye!!!");
+        salaChucky = new Room("La sala de chucky, HUYE!");
+        salaTaberna = new Room("La taberna. Pasa y tómate una buena birra. Debes estar cansado después de huir del tigre y del alien.");
+        salaPantera = new Room("La sala de la pantera. Miau, cuidado con el lindo gatito.");
+        salaPub = new Room("El pub. Quieto quieto, traaaanquilooo. Quédate un ratito y échate unos bailes antes de seguir.");
+        salaPozo = new Room("El pozo, has caido y vuelves a la salaPrincipal y empiezas de nuevo!");
+        salaGhetto = new Room("El ghetto. Vete si no quieres caer en el mundo de la droga.");
+        salaFinal = new Room("La salida de la Escape Room!");
+        
+        // AÑADIDO DE OBJETOS - ("objeto", peso)
+        salaAlien.addItem("raygun", 4);
+        salaTaberna.addItem("cerveza", 2);
+        salaTaberna.addItem("cerveza", 3);
+        salaPub.addItem("cubata", 1);
+        salaPub.addItem("cocktail", 1);
+        salaFinal.addItem("trofeo", 5);
 
-        // initialise room exits
+        // SALIDAS SALAS
         //arriba[N], derecha[E], abajo[S], izquierda[W], abajo-derecha[SE]
 
         //salaPrincipal

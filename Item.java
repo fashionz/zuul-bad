@@ -19,6 +19,6 @@ public class Item
      * Crea la descripción del item.
      */
     public String description(){
-        return "En esta sala hay " + itemDescription + " y su peso es de " + itemWeight;
+        return itemDescription + " y su peso es de " + itemWeight + ".";
     }
 }
