@@ -102,6 +102,7 @@ public class Player
                 }
                 else if(!itemCogido && pesoItemsMochila + itemsSala.get(cont).getWeight() > pesoMaxMochila) {
                     System.out.println("No tienes tanta fuerza muchacho, no cargues con más.");
+                    itemCogido = true;
                 }
                 cont ++;
             }
