@@ -6,17 +6,19 @@ public class Item
     private String itemDescription;
     private int itemWeight;
     private String id;
+    private boolean itemPuedeLlevar;
 
     /**
      * Constructor clase item.
      */
-    public Item(String itemDescription, int itemWeight, String id)
+    public Item(String itemDescription, int itemWeight, String id, boolean itemPuedeLlevar)
     {
         this.itemDescription = itemDescription;
         this.itemWeight = itemWeight;
         this.id = id;
+        this.itemPuedeLlevar = itemPuedeLlevar;
     }
-
+    
     /**
      * Crea la descripción del item.
      */
@@ -35,5 +37,9 @@ public class Item
 
     public String getId() {
         return id;
+    }
+    
+    public boolean getItemPuedeLlevar() {
+        return itemPuedeLlevar;
     }
 }

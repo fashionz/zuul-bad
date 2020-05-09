@@ -48,12 +48,12 @@ public class Game
         salaFinal = new Room("La salida de la Escape Room!");
 
         // AÑADIDO DE OBJETOS - ("objeto", peso)
-        salaAlien.addItem("Arma poderosa del Alien", 4, "raygun");
-        salaTaberna.addItem("Estrella Galicia", 2, "cerveza");
-        salaTaberna.addItem("Zumo de Naranja", 3, "zumo");
-        salaPub.addItem("Ron-Cola", 1, "cubata");
-        salaPub.addItem("Daiquiri", 1, "cocktail");
-        salaFinal.addItem("Trofeo que se da al finalizar el Escape Room", 5, "trofeo");
+        salaAlien.addItem("Arma poderosa del Alien", 4, "raygun", false);
+        salaTaberna.addItem("Estrella Galicia", 2, "cerveza", true);
+        salaTaberna.addItem("Zumo de Naranja", 3, "zumo", true);
+        salaPub.addItem("Ron-Cola", 1, "cubata", true);
+        salaPub.addItem("Daiquiri", 1, "cocktail", false);
+        salaFinal.addItem("Trofeo que se da al finalizar el Escape Room", 5, "trofeo", true);
 
         // SALIDAS SALAS
         //arriba[N], derecha[E], abajo[S], izquierda[W], abajo-derecha[SE]

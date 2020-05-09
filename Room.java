@@ -99,8 +99,8 @@ public class Room
     /**
      * Agrega un objeto con el nombre y su respectivo peso.
      */
-    public void addItem(String itemDescription, int itemWeight, String id) {
-        Item item = new Item(itemDescription, itemWeight, id);
+    public void addItem(String itemDescription, int itemWeight, String id, boolean itemPuedeLlevar) {
+        Item item = new Item(itemDescription, itemWeight, id, itemPuedeLlevar);
         listaItem.add(item);
     }
 

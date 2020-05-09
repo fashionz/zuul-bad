@@ -72,6 +72,9 @@ public class Player
         }
     }
 
+    /**
+     * Comando coger objeto
+     */
     public void take(Command command) {
         if(currentRoom.getItems().size() != 0) {
             int cont = 0;
@@ -81,11 +84,15 @@ public class Player
                 if(itemsSala.size() == 0) {
                     System.out.println("No hay objetos en la sala");
                 }
-                else if(itemsSala.get(cont).getId().equals(command.getSecondWord())) {
+                else if(itemsSala.get(cont).getId().equals(command.getSecondWord()) && itemsSala.get(cont).getItemPuedeLlevar()) {
                     mochila.add(itemsSala.get(cont));
                     itemCogido = true;
                     System.out.println("Coges " + itemsSala.get(cont).getId() + " y lo metes en la mochila");
                     currentRoom.eliminarItems(command.getSecondWord());
+                }
+                else if(!itemsSala.get(cont).getItemPuedeLlevar() && itemsSala.get(cont).getId().equals(command.getSecondWord())) {
+                    System.out.println("No tienes permiso para llevar este objeto.");
+                    itemCogido = true;
                 }
                 else if(!itemCogido) {
                     System.out.println("No se encuentra el objeto.");
