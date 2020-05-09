@@ -1,6 +1,7 @@
 /**
  * Clase que se encarga de crear los items para las salas.
  */
+
 public class Item
 {
     private String itemDescription;

@@ -11,14 +11,18 @@ public class Player
     private Room currentRoom;
     private Stack<Room> room;
     private ArrayList<Item> mochila;
+    private int pesoItemsMochila;
+    private int pesoMaxMochila;
 
     /**
      * Constructor for objects of class Player
      */
-    public Player(Room start) {
+    public Player(Room start, int pesoMaxMochila) {
         currentRoom = start;
         room = new Stack<>();
         mochila = new ArrayList<>();
+        pesoItemsMochila = 0;
+        this.pesoMaxMochila = pesoMaxMochila;
     }
 
     /** 
@@ -84,9 +88,11 @@ public class Player
                 if(itemsSala.size() == 0) {
                     System.out.println("No hay objetos en la sala");
                 }
-                else if(itemsSala.get(cont).getId().equals(command.getSecondWord()) && itemsSala.get(cont).getItemPuedeLlevar()) {
+                else if(itemsSala.get(cont).getId().equals(command.getSecondWord()) && itemsSala.get(cont).getItemPuedeLlevar()
+                && pesoItemsMochila + itemsSala.get(cont).getWeight() <= pesoMaxMochila) {
                     mochila.add(itemsSala.get(cont));
                     itemCogido = true;
+                    pesoItemsMochila = pesoItemsMochila + itemsSala.get(cont).getWeight();
                     System.out.println("Coges " + itemsSala.get(cont).getId() + " y lo metes en la mochila");
                     currentRoom.eliminarItems(command.getSecondWord());
                 }
@@ -94,11 +100,14 @@ public class Player
                     System.out.println("No tienes permiso para llevar este objeto.");
                     itemCogido = true;
                 }
-                else if(!itemCogido) {
-                    System.out.println("No se encuentra el objeto.");
+                else if(!itemCogido && pesoItemsMochila + itemsSala.get(cont).getWeight() > pesoMaxMochila) {
+                    System.out.println("No tienes tanta fuerza muchacho, no cargues con más.");
                 }
                 cont ++;
             }
+        }
+        else{
+            System.out.println("No se encuentra el objeto.");
         }
     }
 
@@ -112,6 +121,7 @@ public class Player
             if(mochila.get(cont).getId().equals(command.getSecondWord())) {
                 currentRoom.addItem(mochila.get(cont).getItemDescription(), mochila.get(cont).getWeight(), mochila.get(cont).getId(), mochila.get(cont).getItemPuedeLlevar());
                 System.out.println("Has tirado " + mochila.get(cont).getId() + " de la mochila.");
+                pesoItemsMochila -= mochila.get(cont).getWeight();
                 mochila.remove(cont);
                 itemTirado = true;
             }

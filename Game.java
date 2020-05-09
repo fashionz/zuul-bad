@@ -26,7 +26,7 @@ public class Game
     public Game() 
     {
         parser = new Parser();
-        player = new Player(createRooms());
+        player = new Player(createRooms(), 5);
     }
 
     /**
