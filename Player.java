@@ -73,7 +73,7 @@ public class Player
     }
 
     /**
-     * Comando coger objeto
+     * Comando take. Coge un objeto de la sala y lo guarda en la mochila.
      */
     public void take(Command command) {
         if(currentRoom.getItems().size() != 0) {
@@ -102,12 +102,28 @@ public class Player
         }
     }
 
-    public Room getCurrentRoom() {
-        return currentRoom;
+    /**
+     * Comando drop. Suelta el objeto que tengas en la mochila y lo deja en la sala en la que estés.
+     */
+    public void drop(Command command) {
+        int cont = 0;
+        boolean itemTirado = false;
+        while(!itemTirado && cont < mochila.size()) {
+            if(mochila.get(cont).getId().equals(command.getSecondWord())) {
+                currentRoom.addItem(mochila.get(cont).getItemDescription(), mochila.get(cont).getWeight(), mochila.get(cont).getId(), mochila.get(cont).getItemPuedeLlevar());
+                System.out.println("Has tirado " + mochila.get(cont).getId() + " de la mochila.");
+                mochila.remove(cont);
+                itemTirado = true;
+            }
+            cont ++;
+        }
+        if(!itemTirado) {
+            System.out.println("No tienes " + command.getSecondWord() + " y por tanto no lo puedes tirar.");
+        }
     }
 
     /**
-     * Comando items
+     * Funcionalidad items
      */
     public void items() {
         if(mochila.size() != 0) {
@@ -121,5 +137,12 @@ public class Player
         else {
             System.out.println("La mochila está vacía.");
         }
+    }
+
+    /**
+     * ----------------------------
+     */
+    public Room getCurrentRoom() {
+        return currentRoom;
     }
 }
