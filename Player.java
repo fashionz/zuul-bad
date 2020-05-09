@@ -105,4 +105,21 @@ public class Player
     public Room getCurrentRoom() {
         return currentRoom;
     }
+
+    /**
+     * Comando items
+     */
+    public void items() {
+        if(mochila.size() != 0) {
+            int pesoTotal = 0;
+            for (Item item : mochila) {
+                System.out.println(item.description());
+                pesoTotal = pesoTotal + item.getWeight();
+            }
+            System.out.println("Llevas un peso total en la mochila de: " + pesoTotal);
+        }
+        else {
+            System.out.println("La mochila está vacía.");
+        }
+    }
 }
