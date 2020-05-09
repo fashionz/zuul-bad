@@ -22,7 +22,7 @@ public class Game
     private Parser parser;
     private Room currentRoom;
     private Stack <Room> room;
-        private int pesoItemsMochila;
+    private int pesoItemsMochila;
     private ArrayList<Item> mochila;
 
     /**
@@ -33,7 +33,7 @@ public class Game
         createRooms();
         parser = new Parser();
         room = new Stack<>();
-                pesoItemsMochila = 0;
+        pesoItemsMochila = 0;
         mochila = new ArrayList<>();
     }
 
@@ -55,7 +55,7 @@ public class Game
         salaPozo = new Room("El pozo, has caido y vuelves a la salaPrincipal y empiezas de nuevo!");
         salaGhetto = new Room("El ghetto. Vete si no quieres caer en el mundo de la droga.");
         salaFinal = new Room("La salida de la Escape Room!");
-        
+
         // AÑADIDO DE OBJETOS - ("objeto", peso)
         salaAlien.addItem("Arma poderosa del Alien", 4, "raygun");
         salaTaberna.addItem("Estrella Galicia", 2, "cerveza");
@@ -172,7 +172,7 @@ public class Game
         else if (commandWord.equals("quit")) {
             wantToQuit = quit(command);
         }
-                else if (commandWord.equals("take")) {
+        else if (commandWord.equals("take")) {
             take(command);
         }
         else if (commandWord.equals("drop")) {
@@ -265,7 +265,7 @@ public class Game
     private void eat() {
         System.out.println("acabas de comer y ya no tienes hambre");
     }
-    
+
     /**
      * Regresas por donde has venido.
      */
@@ -278,7 +278,7 @@ public class Game
             System.out.println("No se puede retroceder más.");
         }
     }
-    
+
     /**
      * Comando coger objeto
      */
