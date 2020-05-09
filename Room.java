@@ -99,8 +99,27 @@ public class Room
     /**
      * Agrega un objeto con el nombre y su respectivo peso.
      */
-    public void addItem(String itemDescription, int itemWeight) {
-        Item item = new Item(itemDescription, itemWeight);
+    public void addItem(String itemDescription, int itemWeight, String id) {
+        Item item = new Item(itemDescription, itemWeight, id);
         listaItem.add(item);
+    }
+
+    /**
+     * Array que te proporciona los items
+     */
+    public ArrayList getItems() {
+        return listaItem;
+    }
+
+    public void eliminarItems(String id) {
+        int cont = 0;
+        boolean eliminarItem = false;
+        while(!eliminarItem) {
+            if(listaItem.get(cont).getId().equals(id)) {
+                listaItem.remove(cont);
+                eliminarItem = true;
+            }
+            cont ++;
+        }
     }
 }

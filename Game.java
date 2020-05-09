@@ -48,12 +48,12 @@ public class Game
         salaFinal = new Room("La salida de la Escape Room!");
 
         // AÑADIDO DE OBJETOS - ("objeto", peso)
-        salaAlien.addItem("raygun", 4);
-        salaTaberna.addItem("cerveza", 2);
-        salaTaberna.addItem("cerveza", 3);
-        salaPub.addItem("cubata", 1);
-        salaPub.addItem("cocktail", 1);
-        salaFinal.addItem("trofeo", 5);
+        salaAlien.addItem("Arma poderosa del Alien", 4, "raygun");
+        salaTaberna.addItem("Estrella Galicia", 2, "cerveza");
+        salaTaberna.addItem("Zumo de Naranja", 3, "zumo");
+        salaPub.addItem("Ron-Cola", 1, "cubata");
+        salaPub.addItem("Daiquiri", 1, "cocktail");
+        salaFinal.addItem("Trofeo que se da al finalizar el Escape Room", 5, "trofeo");
 
         // SALIDAS SALAS
         //arriba[N], derecha[E], abajo[S], izquierda[W], abajo-derecha[SE]
@@ -157,6 +157,9 @@ public class Game
         }
         else if (commandWord.equals("eat")) {
             player.eat(); 
+        }
+        else if (commandWord.equals("take")) {
+            player.take(command);
         }
         else if (commandWord.equals("quit")) {
             wantToQuit = quit(command);

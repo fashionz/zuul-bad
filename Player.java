@@ -1,4 +1,5 @@
 import java.util.Stack;
+import java.util.ArrayList;
 /**
  * Clase Player perteneciente al juego World of Zuul.
  * 
@@ -9,6 +10,7 @@ public class Player
 {
     private Room currentRoom;
     private Stack<Room> room;
+    private ArrayList<Item> mochila;
 
     /**
      * Constructor for objects of class Player
@@ -16,6 +18,7 @@ public class Player
     public Player(Room start) {
         currentRoom = start;
         room = new Stack<>();
+        mochila = new ArrayList<>();
     }
 
     /** 
@@ -66,6 +69,29 @@ public class Player
         }
         else {
             System.out.println("No se puede retroceder más.");
+        }
+    }
+
+    public void take(Command command) {
+        if(currentRoom.getItems().size() != 0) {
+            int cont = 0;
+            ArrayList<Item> itemsSala = currentRoom.getItems();
+            boolean itemCogido = false;
+            while(!itemCogido && cont < itemsSala.size()) {
+                if(itemsSala.size() == 0) {
+                    System.out.println("No hay objetos en la sala");
+                }
+                else if(itemsSala.get(cont).getId().equals(command.getSecondWord())) {
+                    mochila.add(itemsSala.get(cont));
+                    itemCogido = true;
+                    System.out.println("Coges " + itemsSala.get(cont).getId() + " y lo metes en la mochila");
+                    currentRoom.eliminarItems(command.getSecondWord());
+                }
+                else if(!itemCogido) {
+                    System.out.println("No se encuentra el objeto.");
+                }
+                cont ++;
+            }
         }
     }
 
