@@ -53,6 +53,7 @@ public class Game
         salaTaberna.addItem("Zumo de Naranja", 3, "zumo", true);
         salaPub.addItem("Ron-Cola", 1, "cubata", true);
         salaPub.addItem("Daiquiri", 1, "cocktail", false);
+        salaGhetto.addItem("Polvitos mágicos. Si los tomas puedes llevar +2 de peso.", 1, "polvitos", true);
         salaFinal.addItem("Trofeo que se da al finalizar el Escape Room", 5, "trofeo", true);
 
         // SALIDAS SALAS
@@ -125,7 +126,7 @@ public class Game
         System.out.println();
         System.out.println("Welcome to the World of Zuul!");
         System.out.println("World of Zuul is a new, incredibly boring adventure game.");
-        System.out.println("Type 'help' if you need help.");
+        System.out.println("Escribe ''help'' si necesitas ayuda.");
         System.out.println();
         player.look();
     }
@@ -164,6 +165,9 @@ public class Game
         else if (commandWord.equals("drop")) {
             player.drop(command);
         }
+        else if (commandWord.equals("snif")) {
+            player.snif(command);
+        }
         else if (commandWord.equals("items")) {
             player.items();
         }
@@ -182,10 +186,10 @@ public class Game
      */
     private void printHelp() 
     {
-        System.out.println("You are lost. You are alone. You wander");
-        System.out.println("around at the university.");
+        System.out.println("Estás perdido, solo y estás deambulando");
+        System.out.println("por el Escape Room");
         System.out.println();
-        System.out.println("Your command words are:");
+        System.out.println("Los comandos que puedes usar para jugar son: ");
         System.out.println(parser.showCommands());
     }
 

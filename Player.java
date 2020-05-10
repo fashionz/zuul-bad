@@ -134,6 +134,28 @@ public class Player
     }
 
     /**
+     * Comando snif. Coge un objeto de la sala y lo guarda en la mochila.
+     */
+    public void snif(Command command) {
+        int cont = 0;
+        boolean polvitosTomados = false;
+        while(!polvitosTomados && cont < mochila.size()) {
+            if(mochila.get(cont).getId().equals(command.getSecondWord()) && mochila.get(cont).getId().equals("polvitos")) {
+                polvitosTomados = true;
+                pesoItemsMochila = pesoItemsMochila - mochila.get(cont).getWeight();
+                mochila.remove(cont);
+                pesoMaxMochila = pesoMaxMochila + 2;
+                System.out.println("Mientras estabas grogui tomandote los polvos, te han cosido un par de bolsillos y te dan un bonus de +2. Ahora tu mochila puede llevar en total: " 
+                    + pesoMaxMochila);
+            }
+            cont ++;
+        }
+        if(!polvitosTomados) {
+            System.out.println("No tienes " + command.getSecondWord() + " y por tanto no te los puedes tomar.");
+        }
+    }
+
+    /**
      * Funcionalidad items
      */
     public void items() {
